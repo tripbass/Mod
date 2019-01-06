@@ -7949,6 +7949,121 @@ void CvGameTextMgr::setCitizenHelp(CvWStringBuffer &szString, const CvCity& kCit
 			szString.append(CvWString::format(L"\n Selected = %d", iValue));
 		}
 	}
+
+	// WTP,Erik Display Hidden Parameters
+
+	const ProfessionTypes lastProfession = kUnit.getLastLbDProfession();
+
+	// Determine if the unit will become an expert or become free
+	if (kUnit.getUnitInfo().LbD_canBecomeExpert() && lastProfession != NO_PROFESSION)
+	{
+
+		// Show profession that the unit has invested turns in (in case it is moved before the turn ends)
+		szString.append(CvWString::format(L"\n %d turns working as a %s", kUnit.getLbDrounds(), GC.getProfessionInfo(lastProfession).getDescription()));
+
+		const int calculatedChance = GET_PLAYER(kUnit.getOwnerINLINE()).calculateLbdChance(kUnit);
+
+		// If we're below the min threshold, show it instead of the chance
+		if (calculatedChance == 0)
+		{
+			szString.append(CvWString::format(L"\n Minimum turns required to become an expert: %d", GC.getLBD_PRE_ROUNDS_EXPERT()));
+		}
+		else
+		{
+			// Otherwise we just show the odds
+			szString.append(CvWString::format(L"\n Chance of becoming an expert: %.1f %%", calculatedChance / 10.0F));
+		}
+	}
+
+
+	if (kUnit.getUnitInfo().LbD_canGetFree())
+	{
+		const int calculatedChance = GET_PLAYER(kUnit.getOwnerINLINE()).calculateGetFreeChance(kUnit);
+
+		szString.append(CvWString::format(L"\n Chance of unit becoming free:  %.1f %%", calculatedChance / 10.0F));
+	}
+
+	
+	if (kUnit.getUnitInfo().LbD_canEscape())
+	{
+		int calculatedChance;
+
+		if (kCity.getPopulation() == 1)
+		{
+			calculatedChance = 0;
+		}
+		else
+		{
+			calculatedChance = GET_PLAYER(kUnit.getOwnerINLINE()).calculateEscapeChance(kUnit);
+		}
+		
+		szString.append(CvWString::format(L"\n Escape chance:  %.1f %%", calculatedChance / 10.0F));
+	}
+
+
+	std::pair<int, int> yieldModifiers[NUM_YIELD_TYPES];
+	std::pair<int, int> yieldChanges[NUM_YIELD_TYPES];
+
+
+	for (int iYield = 0; iYield < NUM_YIELD_TYPES; iYield++)
+	{
+		yieldModifiers[iYield].first = kUnit.getUnitInfo().getYieldModifier(iYield);
+		yieldModifiers[iYield].second = iYield;
+	
+		yieldChanges[iYield].first = kUnit.getUnitInfo().getYieldChange(iYield);
+		yieldChanges[iYield].second = iYield;
+	}
+	
+	// TODO: use static cast
+	std::sort(yieldModifiers, yieldModifiers + (int)NUM_YIELD_TYPES, std::greater<std::pair<int,int> >());
+	std::sort(yieldChanges, yieldChanges + (int)NUM_YIELD_TYPES, std::greater<std::pair<int, int> >());
+
+	int last = INT_MIN;
+		
+	for (int iYield = 0; iYield < NUM_YIELD_TYPES; iYield++)
+	{	
+		const int iYieldModifier = yieldModifiers[iYield].first;
+
+		if (iYieldModifier != 0 && iYieldModifier != last)
+		{
+			// Display modifer
+			szString.append(CvWString::format(L"\n %+d%% production of \n", iYieldModifier));
+			last = iYieldModifier;
+		}
+		if (iYieldModifier != 0)
+		{
+			// Display yield icon
+			szString.append(CvWString::format(L"<img=%S size=16></img> ", GC.getYieldInfo((YieldTypes)yieldModifiers[iYield].second).getButton()));
+		}
+	}
+
+	last = INT_MIN;
+
+
+	for (int iYield = 0; iYield < NUM_YIELD_TYPES; iYield++)
+	{
+		const int iYieldChange = yieldChanges[iYield].first;
+
+		if (iYieldChange != 0 && iYieldChange != last)
+		{
+			// Display modifer
+			szString.append(CvWString::format(L"\n %+d production of \n", iYieldChange));
+			last = iYieldChange;
+		}
+		if (iYieldChange != 0)
+		{
+			// Display yield icon
+			szString.append(CvWString::format(L"<img=%S size=16></img> ", GC.getYieldInfo((YieldTypes)yieldChanges[iYield].second).getButton()));
+		}
+	}
+
+	// TODO: What about these:
+	/*
+	DllExport int getYieldDemand(int i) const;
+	DllExport int getBonusYieldChange(int i) const;
+	*/
+
+	// WTP, End
 }
 
 void CvGameTextMgr::setEuropeYieldSoldHelp(CvWStringBuffer &szString, const CvPlayer& kPlayer, YieldTypes eYield, int iAmount, int iCommission)

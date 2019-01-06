@@ -68,6 +68,10 @@ public:
 	void doLbD();
 	bool LbD_try_become_expert(CvUnit* convUnit, int base, int increase, int pre_rounds, int l_level);
 	bool LbD_try_get_free(CvUnit* convUnit, int base, int increase, int pre_rounds, int mod_crim, int mod_serv, int l_level);
+	int calculateLbdChance(const CvUnit& kUnit) const;
+	int calculateGetFreeChance(const CvUnit& kUnit) const;
+	int calculateEscapeChance(const CvUnit& kUnit) const;
+
 	// TAC - LbD - Ray - END
 	//TAC Native Mercs
 	void checkForNativeMercs();

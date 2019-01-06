@@ -19989,6 +19989,130 @@ void CvPlayer::redistributeCannonsAndMuskets()
 }
 
 
+// For human players only
+int CvPlayer::calculateEscapeChance(const CvUnit& kUnit) const
+{
+	const int base_chance_escape = GC.getLBD_CHANCE_ESCAPE();
+	const int mod_escape_criminal = GC.getLBD_CHANCE_MOD_ESCAPE_CRIMINAL();
+	const int mod_escape_servant = GC.getLBD_CHANCE_MOD_ESCAPE_SERVANT();
+
+	//cases criminal or servant
+	int modcase = kUnit.getUnitInfo().getUnitClassType();
+
+	// servant (and african / native slave) is the default
+	int mod = mod_escape_servant;
+
+	// criminal
+	if (modcase == 2)
+	{
+		mod = mod_escape_criminal;
+	}
+
+	// TODO: cases criminal or servant
+	const int calculatedChance = (base_chance_escape * mod);
+
+	return calculatedChance;
+}
+
+
+// For human players only
+int CvPlayer::calculateGetFreeChance(const CvUnit& kUnit) const
+{
+	const int base_chance_free = GC.getLBD_BASE_CHANCE_FREE();
+	int chance_increase_free = GC.getLBD_CHANCE_INCREASE_FREE();
+	int pre_rounds_free = GC.getLBD_PRE_ROUNDS_FREE();
+	const int mod_free_criminal = GC.getLBD_CHANCE_MOD_FREE_CRIMINAL();
+	const int mod_free_servant = GC.getLBD_CHANCE_MOD_FREE_SERVANT();
+
+	//getting GameSpeedModifiert in percent
+	int train_percent = GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getTrainPercent();
+
+	//modifying Expert values with GameSpeed
+	chance_increase_free = chance_increase_free / train_percent / 100;
+	pre_rounds_free = pre_rounds_free * train_percent / 100;
+
+	// get data from Unit
+	int workedRounds = kUnit.getLbDrounds();
+	
+	if (workedRounds < pre_rounds_free)
+	{
+		return 0;
+	}
+
+	//cases criminal or servant
+	int modcase = kUnit.getUnitInfo().getUnitClassType();
+
+	// servant (and african / native slave) is the default
+	int mod = mod_free_servant;
+
+	// criminal
+	if (modcase == 2)
+	{
+		mod = mod_free_criminal;
+	}
+
+	//get LearnLevel of profession
+	int learn_level = GC.getProfessionInfo(kUnit.getProfession()).LbD_getLearnLevel();
+	// just for safety, catch possible XML mistakes which might break calculation
+	if (learn_level == 0)
+	{
+		learn_level = 1;
+	}
+
+	const int calculatedChance = (base_chance_free + (workedRounds - pre_rounds_free) * chance_increase_free * learn_level * mod);
+}
+
+
+// For human players only
+int CvPlayer::calculateLbdChance(const CvUnit& kUnit) const
+{
+	const int base_chance_expert = GC.getLBD_BASE_CHANCE_EXPERT();
+	int chance_increase_expert = GC.getLBD_CHANCE_INCREASE_EXPERT();
+	int pre_rounds_expert = GC.getLBD_PRE_ROUNDS_EXPERT();
+
+	//getting GameSpeedModifiert in percent
+	const int train_percent = GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getTrainPercent();
+
+	//modifying Expert values with GameSpeed
+	chance_increase_expert = chance_increase_expert / train_percent / 100;
+	pre_rounds_expert = pre_rounds_expert * train_percent / 100;
+
+	// get data from Unit
+	const int workedRounds = kUnit.getLbDrounds();
+	
+	if (workedRounds < pre_rounds_expert)
+	{
+		return 0;
+	}
+
+	//get LearnLevel of profession
+	int learn_level = GC.getProfessionInfo(kUnit.getProfession()).LbD_getLearnLevel();
+	// just for safety, catch possible XML mistakes which might break calculation
+	if (learn_level == 0)
+	{
+		learn_level = 1;
+	}
+
+	//Schmiddie, added LbD modifier for Sophisticated Trait START
+	int calculatedChance = (base_chance_expert + (workedRounds - pre_rounds_expert) * chance_increase_expert / learn_level);
+
+	for (int iTrait = 0; iTrait < GC.getNumTraitInfos(); ++iTrait)
+	{
+		TraitTypes eTrait = (TraitTypes)iTrait;
+		if (eTrait != NO_TRAIT)
+		{
+			if (hasTrait(eTrait))
+			{
+				calculatedChance *= GC.getTraitInfo(eTrait).getLearningByDoingModifier() + 100;
+				calculatedChance /= 100;
+			}
+		}
+	}
+	//Schmiddie, added LbD modifier for Sophisticated Trait ENDE
+
+	return calculatedChance;
+}
+
 // TAC - LbD - Ray - START
 bool CvPlayer::LbD_try_become_expert(CvUnit* convUnit, int base, int increase, int pre_rounds, int l_level)
 {
