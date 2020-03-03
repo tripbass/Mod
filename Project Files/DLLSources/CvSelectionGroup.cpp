@@ -1981,7 +1981,7 @@ bool CvSelectionGroup::canMoveInto(CvPlot* pPlot, bool bAttack)
 		{
 			pLoopUnit = ::getUnit(pUnitNode->m_data);
 
-			if (pLoopUnit->canMoveInto(pPlot, bAttack))
+			if (pLoopUnit->canMoveInto(*pPlot, bAttack))
 			{
 				return true;
 			}
@@ -2007,7 +2007,7 @@ bool CvSelectionGroup::canMoveOrAttackInto(CvPlot const& kPlot, bool bDeclareWar
 		//if (pLoopUnit->canMoveOrAttackInto(pPlot, bDeclareWar))
 		if ((!bCheckMoves || pLoopUnit->canMove()) && // K-Mod
 			(bVisible ? pLoopUnit->canMoveOrAttackInto(&kPlot, bDeclareWar) :
-				pLoopUnit->canMoveInto(&kPlot, false, bDeclareWar, false/*, false*/)))
+				pLoopUnit->canMoveInto(kPlot, false, bDeclareWar, false/*, false*/)))
 		{
 			return true;
 		}
@@ -2026,7 +2026,7 @@ bool CvSelectionGroup::canMoveThrough(CvPlot const& kPlot, bool bDeclareWar, boo
 	{
 		CvUnit const* pLoopUnit = ::getUnit(pUnitNode->m_data);
 		//if (!pLoopUnit->canMoveThrough(kPlot))
-		if (!pLoopUnit->canMoveInto(&kPlot, false, bDeclareWar, true/*, bAssumeVisible*/)) // K-Mod
+		if (!pLoopUnit->canMoveInto(kPlot, false, bDeclareWar, true/*, bAssumeVisible*/)) // K-Mod
 		{
 			return false;
 		}
@@ -2723,7 +2723,7 @@ void CvSelectionGroup::groupMove(CvPlot* pPlot, bool bCombat, CvUnit* pCombatUni
 		// K-Mod
 		if (pLoopUnit == NULL)
 			continue;
-		if (pLoopUnit->canMove() && (bCombat ? pLoopUnit->canMoveOrAttackInto(pPlot) : pLoopUnit->canMoveInto(pPlot)))
+		if (pLoopUnit->canMove() && (bCombat ? pLoopUnit->canMoveOrAttackInto(pPlot) : pLoopUnit->canMoveInto(*pPlot)))
 		{
 			pLoopUnit->move(pPlot, true);
 		}

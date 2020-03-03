@@ -393,7 +393,7 @@ CvUnit* CvSelectionGroupAI::AI_getBestGroupAttacker(const CvPlot* pPlot, bool bP
 			}
 			
 			// attack bug fix - start - Nightinggale
-			if (bCanAttack && !pLoopUnit->canMoveInto(pPlot, true))
+			if (bCanAttack && !pLoopUnit->canMoveInto(*pPlot, true))
 			{
 				// Don't let the AI attack with this unit as it can't move into the plot in question.
 				bCanAttack = false;
@@ -404,7 +404,7 @@ CvUnit* CvSelectionGroupAI::AI_getBestGroupAttacker(const CvPlot* pPlot, bool bP
 			{
 				if (bForce || pLoopUnit->canMove())
 				{
-					if (bForce || pLoopUnit->canMoveInto(pPlot, /*bAttack*/ true, /*bDeclareWar*/ bPotentialEnemy))
+					if (bForce || pLoopUnit->canMoveInto(*pPlot, /*bAttack*/ true, /*bDeclareWar*/ bPotentialEnemy))
 					{
 						iOdds = pLoopUnit->AI_attackOdds(pPlot, bPotentialEnemy);
 
@@ -453,7 +453,7 @@ CvUnit* CvSelectionGroupAI::AI_getBestGroupSacrifice(const CvPlot* pPlot, bool b
 			{
 				if (bForce || pLoopUnit->canMove())
 				{
-					if (bForce || pLoopUnit->canMoveInto(pPlot, true))
+					if (bForce || pLoopUnit->canMoveInto(*pPlot, true))
 					{
                         int iValue = pLoopUnit->AI_sacrificeValue(pPlot);
 						FAssertMsg(iValue > 0, "iValue is expected to be greater than 0");
@@ -524,7 +524,7 @@ int CvSelectionGroupAI::AI_sumStrength(const CvPlot* pAttackedPlot, DomainTypes 
 			if (!bCheckCanAttack || bCanAttack)
 			{
 				if (!bCheckCanMove || pLoopUnit->canMove())
-					if (!bCheckCanMove || pAttackedPlot == NULL || pLoopUnit->canMoveInto(pAttackedPlot, /*bAttack*/ true, /*bDeclareWar*/ true))
+					if (!bCheckCanMove || pAttackedPlot == NULL || pLoopUnit->canMoveInto(*pAttackedPlot, /*bAttack*/ true, /*bDeclareWar*/ true))
 						if (eDomainType == NO_DOMAIN || pLoopUnit->getDomainType() == eDomainType)
 							strSum += pLoopUnit->currEffectiveStr(pAttackedPlot, pLoopUnit);
 			}

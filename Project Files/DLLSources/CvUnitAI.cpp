@@ -4752,8 +4752,7 @@ void CvUnitAI::AI_transportSeaMove()
 			return;
 		}
 	}
-// Seems buggy, no mission is being pushes
-#if 0
+
 	// TAC - AI Improved Naval AI - koma13 - START
 	//if ((GET_PLAYER(getOwnerINLINE()).getNumEuropeUnits() > 0) || isFull())
 	if (bPickupUnitsFromEurope || isFull())
@@ -4763,7 +4762,7 @@ void CvUnitAI::AI_transportSeaMove()
 		AI_setUnitAIState(UNITAI_STATE_SAIL);
 		return;
 	}
-#endif	
+
 	CvArea* pArea = area();
 	if (!pArea->isWater())
 	{
@@ -6657,7 +6656,7 @@ bool CvUnitAI::AI_sailTo(const SailToHelper& sth, bool bMove, bool bIgnoreDanger
 		if (canCrossOcean(pLoopPlot, sth.unitTravelState))
 		{
 			int iPathTurns;
-			if (generatePath(pLoopPlot, MOVE_BUST_FOG, true, &iPathTurns, bIgnoreDanger))
+			if (generatePath(pLoopPlot, MOVE_BUST_FOG, true, &iPathTurns/*, bIgnoreDanger*/))
 			{
 				int iValue = 10000;
 				iValue /= 100 + getPathCost();
@@ -6958,7 +6957,7 @@ bool CvUnitAI::AI_deliverUnits()
 							if (iValue > iBestValue)
 							{
 								iBestValue = iValue;
-								pBestDestination = canMoveInto(pDestination) ? pDestination : getGroup()->getPathSecondLastPlot();	
+								pBestDestination = canMoveInto(*pDestination) ? pDestination : getGroup()->getPathSecondLastPlot();	
 								
 								pBestPlot = (getGroup()->getPathEndTurnPlot() == pDestination) ? pBestDestination : getGroup()->getPathEndTurnPlot();	// TAC - AI Improved Naval AI - koma13
 							}
@@ -7007,7 +7006,7 @@ CvPlot* CvUnitAI::AI_bestDestinationPlot(bool bIgnoreDanger)
 		if (pLoopPlot->isEuropeAccessable())
 		{
 			CvPlot* pOceanPlot = findNearbyOceanPlot(pLoopPlot);
-			if (pOceanPlot != NULL && getGroup()->generatePath(pOceanPlot, pLoopPlot, MOVE_BUST_FOG, true, NULL, bIgnoreDanger))
+			if (pOceanPlot != NULL && getGroup()->generatePath(pOceanPlot, pLoopPlot, MOVE_BUST_FOG, true, NULL/*, bIgnoreDanger*/))
 			{
 				int iValue = (pCity->isBestPortCity() ? 2 : 1);
 
@@ -7198,7 +7197,7 @@ CvPlot* CvUnitAI::AI_determineDestination(CvPlot** ppMissionPlot, MissionTypes* 
 								if (iValue > iBestValue)
 								{
 									iBestValue = iValue;
-									pBestPlot = pTransport->canMoveInto(pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
+									pBestPlot = pTransport->canMoveInto(*pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
 									if (ppMissionPlot != NULL)
 									{
 										*ppMissionPlot = pLoopPlot;
@@ -7238,7 +7237,7 @@ CvPlot* CvUnitAI::AI_determineDestination(CvPlot** ppMissionPlot, MissionTypes* 
 						if (iValue > iBestValue)
 						{
 							iBestValue = iValue;
-							pBestPlot = pTransport->canMoveInto(pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
+							pBestPlot = pTransport->canMoveInto(*pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
 							if (ppMissionPlot != NULL)
 							{
 								*ppMissionPlot = pLoopPlot;
@@ -7271,7 +7270,7 @@ CvPlot* CvUnitAI::AI_determineDestination(CvPlot** ppMissionPlot, MissionTypes* 
 				if (iValue > iBestValue)
 				{
 					iBestValue = iValue;
-					pBestPlot = pTransport->canMoveInto(pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
+					pBestPlot = pTransport->canMoveInto(*pLoopPlot) ? pLoopPlot : pTransport->getGroup()->getPathSecondLastPlot();
 					if (ppMissionPlot != NULL)
 					{
 						*ppMissionPlot = pLoopPlot;
@@ -7986,7 +7985,7 @@ bool CvUnitAI::AI_unloadWhereNeeded(int iMaxPath)
 			
 			// TAC - AI Improved Naval AI - koma13 - START
 			//if (atPlot(pLoopPlot) || pTransportUnit->generatePath(pLoopPlot, MOVE_SAFE_TERRITORY, true, &iPathTurns))
-			if (atPlot(pLoopPlot) || pTransportUnit->generatePath(pLoopPlot, MOVE_SAFE_TERRITORY, true, &iPathTurns, false))
+			if (atPlot(pLoopPlot) || pTransportUnit->generatePath(pLoopPlot, MOVE_SAFE_TERRITORY, true, &iPathTurns/*, false*/))
 			// TAC - AI Improved Naval AI - koma13 - END
 			{
 				if (iPathTurns < iMaxPath)
@@ -8290,7 +8289,7 @@ bool CvUnitAI::AI_advance(bool bAttack)
 		CvPlot* pDirectionPlot = plotDirection(getX_INLINE(), getY_INLINE(), (DirectionTypes)i);
 		if (pDirectionPlot != NULL)
 		{
-			if (bAttack ? canMoveOrAttackInto(pDirectionPlot, false) : canMoveInto(pDirectionPlot, false))
+			if (bAttack ? canMoveOrAttackInto(pDirectionPlot, false) : canMoveInto(*pDirectionPlot, false))
 			{
 				int iValue = kTeam.AI_enemyCityDistance(pDirectionPlot);
 				if (iValue >= 0)
@@ -8329,7 +8328,7 @@ bool CvUnitAI::AI_loiter(int iMinDistance, int iMaxDistance, bool bAttack)
 			CvPlot* pLoopPlot = plotXY(getX_INLINE(), getY_INLINE(), iX, iY);
 			if (pLoopPlot != NULL)
 			{
-				if (atPlot(pLoopPlot) || (bAttack ? canMoveOrAttackInto(pLoopPlot, false) : canMoveInto(pLoopPlot, false)))
+				if (atPlot(pLoopPlot) || (bAttack ? canMoveOrAttackInto(pLoopPlot, false) : canMoveInto(*pLoopPlot, false)))
 				{
 					int iEnemyDistance = kTeam.AI_enemyCityDistance(pLoopPlot);
 					if (iEnemyDistance >= 0)
@@ -8431,7 +8430,7 @@ bool CvUnitAI::AI_counter(int iTether)
 		CvPlot* pDirectionPlot = plotDirection(getX_INLINE(), getY_INLINE(), (DirectionTypes)i);
 		if (pDirectionPlot != NULL)
 		{
-			if (canMoveInto(pDirectionPlot, false))
+			if (canMoveInto(*pDirectionPlot, false))
 			{
 				int iFriendlyCityDistance = kOwner.AI_cityDistance(pDirectionPlot);
 				
@@ -9059,7 +9058,7 @@ bool CvUnitAI::AI_respondToPickup(int iMaxPath, UnitAITypes eUnitAI)
 							{
 								CvPlot* pLoopPlot = NULL;
 								int iPathTurns = 0;
-								if ((atPlot(pMissionPlot) || (canMoveInto(pMissionPlot) && generatePath(pMissionPlot, MOVE_NO_ENEMY_TERRITORY, true, &iPathTurns))) && (iPathTurns <= iMaxPathTurns))
+								if ((atPlot(pMissionPlot) || (canMoveInto(*pMissionPlot) && generatePath(pMissionPlot, MOVE_NO_ENEMY_TERRITORY, true, &iPathTurns))) && (iPathTurns <= iMaxPathTurns))
 								{
 									pLoopPlot = pMissionPlot;
 								}
@@ -10758,7 +10757,7 @@ bool CvUnitAI::AI_lead(std::vector<UnitAITypes>& aeUnitAITypes)
 							{
 								int iPathTurns;
 								// Erik: Great people should avoid dangerous paths
-								if (generatePath(pLoopUnit->plot(), MOVE_NO_ENEMY_TERRITORY | MOVE_AVOID_ENEMY_WEIGHT_3, true, &iPathTurns, false))
+								if (generatePath(pLoopUnit->plot(), MOVE_NO_ENEMY_TERRITORY | MOVE_AVOID_ENEMY_WEIGHT_3, true, &iPathTurns/*, false*/))
 								{
 									// pick the unit with the highest current strength
 									int iCombatStrength = pLoopUnit->currCombatStr(NULL, NULL);
@@ -12743,7 +12742,7 @@ bool CvUnitAI::AI_targetCityNative(int iFlags)
 		if (pBestPlot != NULL)
 		{
 			FAssert(!(pBestCity->at(pBestPlot)) || 0 != (iFlags & MOVE_THROUGH_ENEMY)); // no suicide missions...
-			if (!atPlot(pBestPlot) && canMoveInto(pBestPlot, true)) // bugfix: don't attack plots the unit can't enter - Nightinggale
+			if (!atPlot(pBestPlot) && canMoveInto(*pBestPlot, true)) // bugfix: don't attack plots the unit can't enter - Nightinggale
 			{
 				getGroup()->pushMission(MISSION_MOVE_TO, pBestPlot->getX_INLINE(), pBestPlot->getY_INLINE(), iFlags);
 				return true;
@@ -13544,7 +13543,7 @@ bool CvUnitAI::AI_cityAttack(int iRange, int iOddsThreshold, bool bFollow)
 					{
 						if (AI_potentialEnemy(pLoopPlot->getTeam(), pLoopPlot) && (GET_TEAM(getTeam()).AI_getWarPlan(pLoopPlot->getTeam()) != WARPLAN_EXTORTION))
 						{
-							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(pLoopPlot, true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
+							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(*pLoopPlot, true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
 							{
 								iValue = getGroup()->AI_attackOdds(pLoopPlot, true);
 
@@ -13610,7 +13609,7 @@ bool CvUnitAI::AI_anyAttack(int iRange, int iOddsThreshold, int iMinStack, bool 
 						if (bCanBombard || pLoopPlot->isVisibleEnemyUnit(this) || (pLoopPlot->isCity(true) && AI_potentialEnemy(pLoopPlot->getTeam(), pLoopPlot) && (GET_TEAM(getTeam()).AI_getWarPlan(pLoopPlot->getTeam()) != WARPLAN_EXTORTION)))
 						{
 							int iPathTurns;
-							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(pLoopPlot, true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
+							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(*pLoopPlot, true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
 							{
 								if (pLoopPlot->getNumVisibleEnemyDefenders(this) >= iMinStack)
 								{
@@ -14366,7 +14365,7 @@ bool CvUnitAI::AI_hostileShuffle()
 			{
 				if (stepDistance(pLoopPlot->getX_INLINE(), pLoopPlot->getY_INLINE(), pBestAdjacentPlot->getX_INLINE(), pBestAdjacentPlot->getY_INLINE()) <= 1)
 				{
-					if (atPlot(pLoopPlot) || canMoveInto(pLoopPlot))
+					if (atPlot(pLoopPlot) || canMoveInto(*pLoopPlot))
 					{
 						int iValue = pLoopPlot->defenseModifier(getTeam());
 						if (!pLoopPlot->isRiverCrossing(directionXY(pLoopPlot, pBestAdjacentPlot)))
@@ -14598,6 +14597,9 @@ bool CvUnitAI::AI_found(int iMinValue)
 								}
 								else
 								{
+									// Due to the step <= 1 check, we know that we're adjacent to land. Check if we can move into the plot
+									//bValid = canMoveInto(pLoopPlot);
+
 									bValid = generatePath(pLoopPlot, 0, !bTransportPath, &iPathTurns);
 								}
 								bTransportPath = bTransport;
@@ -14790,7 +14792,7 @@ bool CvUnitAI::AI_joinCity(int iMaxPath)
 				{
 					// TAC - AI Improved Naval AI - koma13 - START
 					//bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns);
-					bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns, false);
+					bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns);
 					// TAC - AI Improved Naval AI - koma13 - END
 				}
 				else
@@ -14943,7 +14945,7 @@ bool CvUnitAI::AI_joinOptimalCity()
 				{
 					// TAC - AI Improved Naval AI - koma13 - START
 					//bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns);
-					bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns, false);
+					bValid = pTransportUnit->generatePath(pLoopPlot, 0, bTransportPath, &iPathTurns);
 					// TAC - AI Improved Naval AI - koma13 - END
 				}
 				else
@@ -17025,7 +17027,7 @@ bool CvUnitAI::AI_retreatToCity(bool bPrimary, int iMaxPath, bool bAvoidDanger)
 						}
 
 
-						if (!atPlot(pLoopCity->plot()) && generatePath(pLoopCity->plot(), iFlags, true, &iPathTurns, bIgnoredanger))
+						if (!atPlot(pLoopCity->plot()) && generatePath(pLoopCity->plot(), iFlags, true, &iPathTurns/*, bIgnoredanger*/))
 						{
 							if (iPathTurns <= ((iPass == 2) ? 1 : iMaxPath))
 							{
@@ -18037,7 +18039,7 @@ bool CvUnitAI::AI_stackAttackCity(int iRange, int iPowerThreshold, bool bFollow)
 					{
 						if (AI_potentialEnemy(pLoopPlot->getTeam(), pLoopPlot))
 						{
-							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(pLoopPlot, /*bAttack*/ true, /*bDeclareWar*/ true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
+							if (!atPlot(pLoopPlot) && ((bFollow) ? canMoveInto(*pLoopPlot, /*bAttack*/ true, /*bDeclareWar*/ true) : (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= iRange))))
 							{
 								iValue = getGroup()->AI_compareStacks(pLoopPlot, /*bPotentialEnemy*/ true, /*bCheckCanAttack*/ true, /*bCheckCanMove*/ true);
 
@@ -18104,7 +18106,7 @@ bool CvUnitAI::AI_moveIntoCity(int iRange)
 				{
 					if (pLoopPlot->isCity() || (pLoopPlot->isCity(true)))
 					{
-						if (canMoveInto(pLoopPlot, false) && (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= 1)))
+						if (canMoveInto(*pLoopPlot, false) && (generatePath(pLoopPlot, 0, true, &iPathTurns) && (iPathTurns <= 1)))
 						{
 							iValue = 1;
 							if (pLoopPlot->getPlotCity() != NULL)
@@ -18491,7 +18493,7 @@ bool CvUnitAI::AI_solveBlockageProblem(CvPlot* pDestPlot, bool bDeclareWar)
 						CvPlot* pPlot = GC.getMapINLINE().plotSoren(pStepNode->m_pPrev->m_iX, pStepNode->m_pPrev->m_iY);
 						if (pPlot->getTeam() != NO_TEAM)
 						{
-							if (!canMoveInto(pPlot, true, true))
+							if (!canMoveInto(*pPlot, true, true))
 							{
 								if (!isPotentialEnemy(pPlot->getTeam(), pPlot))
 								{
