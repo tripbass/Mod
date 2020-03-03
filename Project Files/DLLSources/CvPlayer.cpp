@@ -6850,7 +6850,7 @@ int CvPlayer::revolutionEuropeUnitThreshold() const
 
 CvPlot* CvPlayer::getStartingPlot() const
 {
-	return GC.getMapINLINE().plotSorenINLINE(m_iStartingX, m_iStartingY);
+	return GC.getMapINLINE().plotSoren(m_iStartingX, m_iStartingY);
 }
 
 

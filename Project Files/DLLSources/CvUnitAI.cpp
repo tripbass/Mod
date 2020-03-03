@@ -85,7 +85,8 @@ bool CvUnitAI::AI_update()
 	//FAssertMsg(getUnitTravelState() != NO_UNIT_TRAVEL_STATE || canMove(), "canMove is expected to be true");
 	FAssertMsg(isGroupHead(), "isGroupHead is expected to be true"); // XXX is this a good idea???
 
-	getGroup()->resetPath();
+	//getGroup()->resetPath();
+	CvSelectionGroup::path_finder.Reset();
 
 	// allow python to handle it
 	if (GC.getUSE_AI_UNIT_UPDATE_CALLBACK()) // K-Mod. block unused python callbacks
@@ -505,7 +506,8 @@ bool CvUnitAI::AI_europeUpdate()
 // Returns true if took an action or should wait to move later...
 bool CvUnitAI::AI_follow()
 {
-	getGroup()->resetPath();
+	//getGroup()->resetPath();
+	CvSelectionGroup::path_finder.Reset();
 
 	if (AI_followBombard())
 	{
@@ -872,7 +874,7 @@ bool CvUnitAI::AI_bestCityBuild(CvCity* pCity, CvPlot** ppBestPlot, BuildTypes* 
 											{
 												// XXX take advantage of range (warning... this could lead to some units doing nothing...)
 												int iMaxWorkers = 1;
-												if (getPathLastNode()->m_iData1 == 0)
+												if (getPathFinder().GetFinalMoves() == 0)
 												{
 													iPathTurns++;
 												}
@@ -882,7 +884,7 @@ bool CvUnitAI::AI_bestCityBuild(CvCity* pCity, CvPlot** ppBestPlot, BuildTypes* 
 												}
 												if (pUnit != NULL)
 												{
-													if (pUnit->plot()->isCity() && iPathTurns == 1 && getPathLastNode()->m_iData1 > 0)
+													if (pUnit->plot()->isCity() && iPathTurns == 1 && getPathFinder().GetFinalMoves() > 0)
 													{
 														iMaxWorkers += 10;
 													}
@@ -926,7 +928,7 @@ bool CvUnitAI::AI_bestCityBuild(CvCity* pCity, CvPlot** ppBestPlot, BuildTypes* 
 							iMaxWorkers += 10;
 						}
 					}	
-					if (getPathLastNode()->m_iData1 == 0)
+					if (getPathFinder().GetFinalMoves() == 0)
 					{
 						iPathTurns++;
 					}
@@ -4750,7 +4752,8 @@ void CvUnitAI::AI_transportSeaMove()
 			return;
 		}
 	}
-	
+// Seems buggy, no mission is being pushes
+#if 0
 	// TAC - AI Improved Naval AI - koma13 - START
 	//if ((GET_PLAYER(getOwnerINLINE()).getNumEuropeUnits() > 0) || isFull())
 	if (bPickupUnitsFromEurope || isFull())
@@ -4760,7 +4763,7 @@ void CvUnitAI::AI_transportSeaMove()
 		AI_setUnitAIState(UNITAI_STATE_SAIL);
 		return;
 	}
-	
+#endif	
 	CvArea* pArea = area();
 	if (!pArea->isWater())
 	{
@@ -11657,7 +11660,7 @@ bool CvUnitAI::AI_exploreRange(int iRange)
 						{
 							if (generatePath(pLoopPlot, MOVE_BUST_FOG, true))
 							{
-								if (getPathLastNode()->m_iData1 == 0)
+								if (getPathFinder().GetFinalMoves() == 0)
 								{
 									iValue += pLoopPlot->seeFromLevel(getTeam()) * 500;
 								}
@@ -13301,7 +13304,7 @@ bool CvUnitAI::AI_pillageAroundCity(CvCity* pTargetCity, int iBonusValueThreshol
                             {
                                 if (generatePath(pLoopPlot, 0, true, &iPathTurns))
                                 {
-                                    if (getPathLastNode()->m_iData1 == 0)
+                                    if (getPathFinder().GetFinalMoves() == 0)
                                     {
                                         iPathTurns++;
                                     }
@@ -14166,7 +14169,7 @@ bool CvUnitAI::AI_pillageRange(int iRange, bool bSafe)
                                         if (generatePath(pLoopPlot, 0, true, &iPathTurns))
                                         {
                                         	bool bDanger = false;
-                                            if (getPathLastNode()->m_iData1 == 0)
+                                            if (getPathFinder().GetFinalMoves() == 0)
                                             {
                                             	bDanger = true;
                                                 iPathTurns++;
@@ -16181,7 +16184,7 @@ bool CvUnitAI::AI_improveCity(CvCity* pCity)
 		else
 		{
 			eMission = MISSION_MOVE_TO;
-			if (NULL != pBestPlot && generatePath(pBestPlot) && (getPathLastNode()->m_iData2 == 1) && (getPathLastNode()->m_iData1 == 0))
+			if (NULL != pBestPlot && generatePath(pBestPlot) && (getPathFinder().GetPathTurns() == 1) && (getPathFinder().GetFinalMoves() == 0))
 			{
 				if (pBestPlot->getRouteType() != NO_ROUTE)
 				{
@@ -16279,7 +16282,7 @@ bool CvUnitAI::AI_improveLocalPlot(int iRange, CvCity* pIgnoreCity)
 													iValue *= 3;
 													iValue /= 2;
 												}
-												else if (getPathLastNode()->m_iData1 == 0)
+												else if (getPathFinder().GetFinalMoves() == 0)
 												{
 													iPathTurns++;
 												}
@@ -16330,7 +16333,7 @@ bool CvUnitAI::AI_improveLocalPlot(int iRange, CvCity* pIgnoreCity)
 		MissionTypes eMission = MISSION_MOVE_TO;
 
 		int iPathTurns;
-		if (generatePath(pBestPlot, 0, true, &iPathTurns) && (getPathLastNode()->m_iData2 == 1) && (getPathLastNode()->m_iData1 == 0))
+		if (generatePath(pBestPlot, 0, true, &iPathTurns) && (getPathFinder().GetPathTurns() == 1) && (getPathFinder().GetFinalMoves() == 0))
 		{
 			if (pBestPlot->getRouteType() != NO_ROUTE)
 			{
@@ -18480,12 +18483,12 @@ bool CvUnitAI::AI_solveBlockageProblem(CvPlot* pDestPlot, bool bDeclareWar)
 
 			while (pStepNode != NULL)
 			{
-				CvPlot* pStepPlot = GC.getMapINLINE().plotSorenINLINE(pStepNode->m_iX, pStepNode->m_iY);
+				CvPlot* pStepPlot = GC.getMapINLINE().plotSoren(pStepNode->m_iX, pStepNode->m_iY);
 				if (canMoveOrAttackInto(pStepPlot) && generatePath(pStepPlot, 0, true))
 				{
 					if (bDeclareWar && pStepNode->m_pPrev != NULL)
 					{
-						CvPlot* pPlot = GC.getMapINLINE().plotSorenINLINE(pStepNode->m_pPrev->m_iX, pStepNode->m_pPrev->m_iY);
+						CvPlot* pPlot = GC.getMapINLINE().plotSoren(pStepNode->m_pPrev->m_iX, pStepNode->m_pPrev->m_iY);
 						if (pPlot->getTeam() != NO_TEAM)
 						{
 							if (!canMoveInto(pPlot, true, true))
@@ -18525,7 +18528,7 @@ bool CvUnitAI::AI_solveBlockageProblem(CvPlot* pDestPlot, bool bDeclareWar)
 						CvPlot* pBestPlot = pStepPlot;
 						//To prevent puppeteering attempt to barge through
 						//if quite close
-						if (getPathLastNode()->m_iData2 > 3)
+						if (getPathFinder().GetPathTurns() > 3)
 						{
 							pBestPlot = getPathEndTurnPlot();
 						}

@@ -297,9 +297,12 @@ void postLoadGameFixes();
 DllExport void sendGameStats(wchar* pURL);
 
 // FAStarFunc...
+// TODO: Remove DllExport since AdvCiv did so
 DllExport int pathDestValid(int iToX, int iToY, const void* pointer, FAStar* finder);
 DllExport int pathHeuristic(int iFromX, int iFromY, int iToX, int iToY);
 DllExport int pathCost(FAStarNode* parent, FAStarNode* node, int data, const void* pointer, FAStar* finder);
+int pathValid_join(FAStarNode* parent, FAStarNode* node, CvSelectionGroup* pSelectionGroup, int iFlags); // K-Mod
+int pathValid_source(FAStarNode* parent, CvSelectionGroup* pSelectionGroup, int iFlags); // K-Mod
 DllExport int pathValid(FAStarNode* parent, FAStarNode* node, int data, const void* pointer, FAStar* finder);
 DllExport int pathAdd(FAStarNode* parent, FAStarNode* node, int data, const void* pointer, FAStar* finder);
 DllExport int stepDestValid(int iToX, int iToY, const void* pointer, FAStar* finder);
