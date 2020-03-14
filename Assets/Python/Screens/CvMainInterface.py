@@ -829,18 +829,12 @@ class CvMainInterface:
 			screen.hide( szButtonID )
 			
 	# GOLD PILE  # Robert Surcouf, Religion and Revolution Gold Pile Icon Start
-		#screen.addDDSGFC("GoldPile", ArtFileMgr.getInterfaceArtInfo("SCREEN_GOLD_PILE").getPath(), 50, 17, 50, 50, WidgetTypes.WIDGET_GENERAL, -1, -1)
-		screen.addDDSGFC("GoldPile", ArtFileMgr.getInterfaceArtInfo("SCREEN_GOLD_PILE").getPath(), 60, 8, 50, 50, WidgetTypes.WIDGET_GENERAL, -1, -1)
+		screen.addDDSGFC("GoldPile", ArtFileMgr.getInterfaceArtInfo("SCREEN_GOLD_PILE").getPath(), 50, 17, 50, 50, WidgetTypes.WIDGET_GENERAL, -1, -1)
 		screen.setImageShape("GoldPile", ImageShapes.IMAGE_SHAPE_ELLIPSE, -1)
 		screen.setHitMargins("GoldPile", 30, 30)
 		self.appendtoHideState(screen, "GoldPile", HIDE_TYPE_MAP, HIDE_LEVEL_HIDE)
 	# Robert Surcouf, Religion and Revolution Gold Pile Icon End
-		
-		# desync log writing button
-		# TODO figure out how to make it appear as needed instead of always or never
-		if (0):
-			screen.setImageButton("DesyncButton", "pink", 100, 100, 100, 100, WidgetTypes.WIDGET_NETWORK_DESYNC, -1, -1)
-		
+			
 	# AUTOMATE PRODUCTION & CITIZEN BUTTON
 		screen.addCheckBoxGFC("AutomateProduction", ArtFileMgr.getInterfaceArtInfo("INTERFACE_CITY_AUTOMATE_PRODUCTION").getPath(), ArtFileMgr.getInterfaceArtInfo("INTERFACE_HIGHLIGHTED_BUTTON").getPath(), CITIZEN_BAR_WIDTH + ((xResolution - CITIZEN_BAR_WIDTH) * 3 / 7) , yResolution - BOTTOM_CENTER_HUD_HEIGHT - TRANSPORT_AREA_HEIGHT - (STACK_BAR_HEIGHT * 2) - (SMALL_BUTTON_SIZE * 3 / 2), SMALL_BUTTON_SIZE * 2, SMALL_BUTTON_SIZE * 2, WidgetTypes.WIDGET_AUTOMATE_PRODUCTION, -1, -1, ButtonStyles.BUTTON_STYLE_LABEL )
 		self.appendtoHideState(screen, "AutomateProduction", HIDE_TYPE_CITY, HIDE_LEVEL_HIDE)
@@ -2137,8 +2131,7 @@ class CvMainInterface:
 			
 			if (pHeadSelectedCity and CyInterface().getShowInterface() == InterfaceVisibility.INTERFACE_SHOW):
 				for iPlotIndex in range(gc.getNUM_CITY_PLOTS()):
-					# removed an if statement. Added a bogus one to avoid touching all lines due to indenting
-					if 1:
+					if iPlotIndex != gc.getCITY_HOME_PLOT():
 						pUnit = pHeadSelectedCity.getUnitWorkingPlot(iPlotIndex)
 						pPlot = pHeadSelectedCity.getCityIndexPlot(iPlotIndex)
 						if not pPlot.isNone():
@@ -2153,18 +2146,7 @@ class CvMainInterface:
 
 							# PLOT DRAG ON PANELS
 ###=====City Radius 2 (NeverMind)===2/2=====###
-
-							x = int(screenPosition.x)
-							y =	int(screenPosition.y) - ButtonSize / (city_radius - 1)
-							size_x = CITY_VIEW_BOX_HEIGHT_AND_WIDTH / city_radius
-							size_y = CITY_VIEW_BOX_HEIGHT_AND_WIDTH / city_radius
-							
-							if iPlotIndex == gc.getCITY_HOME_PLOT():
-								screen.setImageButton("PlotDragOn" + str(iPlotIndex), "", x, y, size_x, size_y, WidgetTypes.WIDGET_CITY_CENTER_PLOT, -1, -1)
-								CitizenHideList.append("PlotDragOn" + str(iPlotIndex))
-								continue
-								
-							screen.addDDSGFC("PlotDragOn" + str(iPlotIndex), "", x, y, size_x, size_y, WidgetTypes.WIDGET_ASSIGN_CITIZEN_TO_PLOT, iPlotIndex, -1) 
+							screen.addDDSGFC("PlotDragOn" + str(iPlotIndex), "", int(screenPosition.x), int(screenPosition.y) - ButtonSize / (city_radius - 1), CITY_VIEW_BOX_HEIGHT_AND_WIDTH / city_radius, CITY_VIEW_BOX_HEIGHT_AND_WIDTH / city_radius, WidgetTypes.WIDGET_ASSIGN_CITIZEN_TO_PLOT, iPlotIndex, -1) 
 							CitizenHideList.append("PlotDragOn" + str(iPlotIndex))
 
 							if (not pUnit.isNone()):
@@ -3289,6 +3271,12 @@ class CvMainInterface:
 		iBtnHeight = 22
 		pHeadSelectedCity = CyInterface().getHeadSelectedCity()
 
+		# New stuff
+		screen.addTableControlGFC("ScoreBackground", 1, xResolution - 100, yResolution - 100 - 180, 100, 100, False, False, 0, 0, TableStyles.TABLE_STYLE_EMPTY)
+		screen.enableSelect("ScoreBackground", False)
+		screen.setTableColumnHeader("ScoreBackground", 0, "", 100)
+		#screen.setTableText("ScoreBackground", 0, iRow, "testdata", "", WidgetTypes.WIDGET_CONTACT_CIV, 1, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+				
 		if ((CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_HIDE_ALL and CyInterface().getShowInterface() != InterfaceVisibility.INTERFACE_MINIMAP_ONLY)):
 			if (CyInterface().isScoresVisible() and not CyInterface().isCityScreenUp() and not CyEngine().isGlobeviewUp() ):
 				i = gc.getMAX_CIV_TEAMS() - 1
@@ -3392,8 +3380,12 @@ class CvMainInterface:
 										yCoord = yResolution - SADDLE_HEIGHT - self.SCORE_TEXT_BOTTOM_MARGIN_SMALL
 
 									if not pHeadSelectedCity:
-										screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight) - 31, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_CONTACT_CIV, ePlayer, -1 )
-										screen.show( szName )
+										iRow = screen.appendTableRow("ScoreBackground")
+										screen.setTableText("ScoreBackground", 0, iRow, szBuffer, "", WidgetTypes.WIDGET_CONTACT_CIV, ePlayer, -1, CvUtil.FONT_RIGHT_JUSTIFY)
+				
+										#screen.setText( szName, "Background", szBuffer, CvUtil.FONT_RIGHT_JUSTIFY, xResolution - 12, yCoord - (iCount * iBtnHeight) - 31, -0.3, FontTypes.SMALL_FONT, WidgetTypes.WIDGET_CONTACT_CIV, ePlayer, -1 )
+										#screen.show( szName )
+										
 									CyInterface().checkFlashReset(ePlayer)
 
 									iCount += 1
@@ -3405,7 +3397,7 @@ class CvMainInterface:
 				else:
 					yCoord = yResolution - SADDLE_HEIGHT - self.SCORE_BACKGROUND_BOTTOM_MARGIN_SMALL
 
-				screen.setPanelSize("ScoreBackground", xResolution - self.SCORE_BACKGROUND_SIDE_MARGIN - iWidth, yCoord - (iBtnHeight * iCount) - 35, iWidth + 12, (iBtnHeight * iCount) + 8 )
+				#screen.setPanelSize("ScoreBackground", xResolution - self.SCORE_BACKGROUND_SIDE_MARGIN - iWidth, yCoord - (iBtnHeight * iCount) - 35, iWidth + 12, (iBtnHeight * iCount) + 8 )
 				if not pHeadSelectedCity:
 					screen.show("ScoreBackground")
 
