@@ -3340,7 +3340,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -3752,7 +3752,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -4160,7 +4160,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -4552,7 +4552,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -4944,7 +4944,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -5336,7 +5336,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
@@ -5732,7 +5732,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>Yield_CLOTH</YieldType>
+					<YieldType>YIELD_CLOTH</YieldType>
 					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
 				<YieldDemand>
