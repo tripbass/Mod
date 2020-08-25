@@ -11041,8 +11041,8 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
-				</iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -11449,7 +11449,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -12253,7 +12253,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -12657,7 +12657,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -16665,7 +16665,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -17065,7 +17065,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -17473,7 +17473,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -17859,7 +17859,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>20<iYieldDemand>
+					<iYieldDemand>20</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
@@ -18268,7 +18268,7 @@
                 </YieldDemand>
 				<YieldDemand>
 					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10<iYieldDemand>
+					<iYieldDemand>10</iYieldDemand>
 				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
