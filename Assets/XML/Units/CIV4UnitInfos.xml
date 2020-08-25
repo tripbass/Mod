@@ -3339,6 +3339,14 @@
                     <YieldType>YIELD_COFFEE</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -3743,6 +3751,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -4143,6 +4159,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -4527,6 +4551,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -4911,6 +4943,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -5295,6 +5335,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -5683,6 +5731,14 @@
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -6063,6 +6119,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -6451,6 +6515,14 @@
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -6839,6 +6911,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -7231,6 +7311,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -7623,6 +7711,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -8015,6 +8111,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -8399,6 +8503,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -8775,6 +8887,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -9159,6 +9279,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -9539,6 +9667,14 @@
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -9915,6 +10051,14 @@
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -10287,6 +10431,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -10655,6 +10807,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -17862,6 +18022,14 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+					<YieldType>Yield_CLOTH</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
+				<YieldDemand>
+					<YieldType>YIELD_COATS</YieldType>
+					<iYieldDemand>10</iYieldDemand>
+				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>20</iYieldDemand>

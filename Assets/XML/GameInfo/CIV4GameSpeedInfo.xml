@@ -127,5 +127,35 @@
                 </GameTurnInfo>
             </GameTurnInfos>
         </GameSpeedInfo>
+		<GameSpeedInfo>
+            <Type>GAMESPEED_TAC_ETERNITY</Type>
+            <Description>TXT_KEY_GAMESPEED_TAC_MARATHON</Description>
+            <Help>TXT_KEY_GAMESPEED_TAC_MARATHON_HELP</Help>
+            <iGrowthPercent>600</iGrowthPercent>
+            <iStoragePercent>600</iStoragePercent>
+            <iTrainPercent>600</iTrainPercent>
+            <iConstructPercent>600</iConstructPercent>
+            <iFatherPercent>1000</iFatherPercent>
+            <iGreatGeneralPercent>600</iGreatGeneralPercent>
+            <iRevolutionTurns>1200</iRevolutionTurns>
+            <GameTurnInfos>
+                <GameTurnInfo>
+                    <iMonthIncrement>1</iMonthIncrement>
+                    <iTurnsPerIncrement>600</iTurnsPerIncrement>
+                </GameTurnInfo>
+                <GameTurnInfo>
+                    <iMonthIncrement>1</iMonthIncrement>
+                    <iTurnsPerIncrement>480</iTurnsPerIncrement>
+                </GameTurnInfo>
+                <GameTurnInfo>
+                    <iMonthIncrement>1</iMonthIncrement>
+                    <iTurnsPerIncrement>480</iTurnsPerIncrement>
+                </GameTurnInfo>
+                <GameTurnInfo>
+                    <iMonthIncrement>1</iMonthIncrement>
+                    <iTurnsPerIncrement>240</iTurnsPerIncrement>
+                </GameTurnInfo>
+            </GameTurnInfos>
+        </GameSpeedInfo>
     </GameSpeedInfos>
 </Civ4GameSpeedInfo>
