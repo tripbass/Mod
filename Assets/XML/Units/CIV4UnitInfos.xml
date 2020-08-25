@@ -17850,6 +17850,7 @@
             <DomainMods/>
             <YieldModifiers/>
             <YieldDemands>
+				<YieldDemand>
                     <YieldType>YIELD_COFFEE</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
