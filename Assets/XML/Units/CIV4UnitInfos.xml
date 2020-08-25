@@ -10298,7 +10298,7 @@
                 <YieldDemand>
                     <YieldType>YIELD_BEER</YieldType>
                     <iYieldDemand>20</iYieldDemand>
-                </YieldDemand>>
+                </YieldDemand>
             </YieldDemands>
             <YieldChanges>
                 <YieldChange>
