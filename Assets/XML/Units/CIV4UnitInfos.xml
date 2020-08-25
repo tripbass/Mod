@@ -17855,7 +17855,7 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
-                    <YieldType>YIELD_WOOL_CLOTHCLOTH</YieldType>
+                    <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
