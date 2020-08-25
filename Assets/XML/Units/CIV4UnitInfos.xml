@@ -592,6 +592,10 @@
                     <iYieldDemand>10</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
+                    <YieldType>YIELD_RUM</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
+                <YieldDemand>
                     <YieldType>YIELD_BEER</YieldType>
                     <iYieldDemand>10</iYieldDemand>
                 </YieldDemand>
@@ -11039,16 +11043,16 @@
                     <YieldType>YIELD_COATS</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
-				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SPICES</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
+				<YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
                     <iYieldDemand>10</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
@@ -11448,9 +11452,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -12252,9 +12256,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -12656,9 +12660,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -16664,9 +16668,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -17064,9 +17068,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -17472,9 +17476,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -17850,7 +17854,7 @@
             <DomainMods/>
             <YieldModifiers/>
             <YieldDemands>
-				<YieldDemand>
+                <YieldDemand>
                     <YieldType>YIELD_COFFEE</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
@@ -17858,10 +17862,10 @@
                     <YieldType>YIELD_WOOL_CLOTH</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
-				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>20</iYieldDemand>
-				</YieldDemand>
+                <YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>20</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -18268,9 +18272,9 @@
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
 				<YieldDemand>
-					<YieldType>YIELD_LEATHER</YieldType>
-					<iYieldDemand>10</iYieldDemand>
-				</YieldDemand>
+                    <YieldType>YIELD_LEATHER</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_SALT</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -19248,6 +19252,10 @@
                     <YieldType>YIELD_SPICES</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
+				<YieldDemand>
+                    <YieldType>YIELD_RUM</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_WINE</YieldType>
                     <iYieldDemand>20</iYieldDemand>
@@ -19597,6 +19605,10 @@
                 <YieldDemand>
                     <YieldType>YIELD_SPICES</YieldType>
                     <iYieldDemand>20</iYieldDemand>
+                </YieldDemand>
+				<YieldDemand>
+                    <YieldType>YIELD_RUM</YieldType>
+                    <iYieldDemand>10</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_WINE</YieldType>
@@ -30347,13 +30359,13 @@
                     <YieldType>YIELD_SPICES</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
-                <YieldDemand>
-                    <YieldType>YIELD_WINE</YieldType>
-                    <iYieldDemand>20</iYieldDemand>
-                </YieldDemand>
 				<YieldDemand>
                     <YieldType>YIELD_RUM</YieldType>
                     <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
+                <YieldDemand>
+                    <YieldType>YIELD_WINE</YieldType>
+                    <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_WHALE_OIL</YieldType>
@@ -30683,13 +30695,13 @@
                     <YieldType>YIELD_SPICES</YieldType>
                     <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
-                <YieldDemand>
-                    <YieldType>YIELD_WINE</YieldType>
-                    <iYieldDemand>20</iYieldDemand>
-                </YieldDemand>
 				<YieldDemand>
                     <YieldType>YIELD_RUM</YieldType>
                     <iYieldDemand>10</iYieldDemand>
+                </YieldDemand>
+                <YieldDemand>
+                    <YieldType>YIELD_WINE</YieldType>
+                    <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
                     <YieldType>YIELD_WHALE_OIL</YieldType>
