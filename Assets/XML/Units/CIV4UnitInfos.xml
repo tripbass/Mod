@@ -218,12 +218,8 @@
                     <iYieldDemand>10</iYieldDemand>
                 </YieldDemand>
                 <YieldDemand>
-                    <YieldType>YIELD_WINE</YieldType>
-                    <iYieldDemand>10</iYieldDemand>
-                </YieldDemand>
-                <YieldDemand>
                     <YieldType>YIELD_BEER</YieldType>
-                    <iYieldDemand>10</iYieldDemand>
+                    <iYieldDemand>20</iYieldDemand>
                 </YieldDemand>
             </YieldDemands>
             <YieldChanges/>
